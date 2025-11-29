@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # WE Quiz Game
 
 لعبة اختبار معلومات تفاعلية مع نظام ترتيب اللاعبين.
@@ -99,3 +100,6 @@ pnpm build
 pnpm preview
 ```
 
+=======
+# WE-Quiz
+>>>>>>> b5e8bbded1d033b6c5528ce203416506c82e99db
