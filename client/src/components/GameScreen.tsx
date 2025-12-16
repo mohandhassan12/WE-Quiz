@@ -122,13 +122,12 @@ export default function GameScreen({
       <div className="flex-1 flex items-center justify-center px-4 py-6 md:py-8">
         <div className="w-full max-w-2xl">
           {/* Question Card */}
-          <Card className={`bg-card border-2 mb-8 p-6 md:p-8 rounded-xl transition-all duration-300 ${
-            showResult
+          <Card className={`bg-card border-2 mb-8 p-6 md:p-8 rounded-xl transition-all duration-300 ${showResult
               ? isCorrect
                 ? 'border-accent glow-lime'
                 : 'border-destructive glow-red'
               : 'border-primary/50 hover:border-primary'
-          }`}>
+            }`} dir="rtl">
             {question.category && (
               <div className="mb-4 text-right">
                 <span className="inline-block bg-primary/20 text-primary px-4 py-2 rounded-lg font-display font-bold text-lg">
@@ -153,19 +152,18 @@ export default function GameScreen({
                     key={letter}
                     onClick={() => !showResult && onSelectAnswer(letter)}
                     disabled={showResult}
-                    className={`w-full text-right p-4 md:p-6 rounded-lg font-body text-base md:text-lg transition-all duration-300 ${
-                      showCorrect
+                    className={`w-full text-right p-4 md:p-6 rounded-lg font-body text-base md:text-lg transition-all duration-300 ${showCorrect
                         ? 'bg-accent text-background border-2 border-accent glow-lime'
                         : showIncorrect
-                        ? 'bg-destructive text-foreground border-2 border-destructive glow-red'
-                        : isSelected
-                        ? 'bg-primary text-background border-2 border-primary glow-cyan'
-                        : 'bg-card border-2 border-primary/30 text-foreground hover:border-primary hover:bg-primary/10'
-                    } ${!showResult && 'hover:scale-105 active:scale-95'}`}
+                          ? 'bg-destructive text-foreground border-2 border-destructive glow-red'
+                          : isSelected
+                            ? 'bg-primary text-background border-2 border-primary glow-cyan'
+                            : 'bg-card border-2 border-primary/30 text-foreground hover:border-primary hover:bg-primary/10'
+                      } ${!showResult && 'hover:scale-105 active:scale-95'}`}
                   >
                     <span className="flex items-center justify-between w-full">
                       <span>{question.options[letter]}</span>
-                      <span className="font-display font-bold text-lg">{letter}</span>
+                      <span className="font-display font-bold text-lg ltr:ml-2">{letter}</span>
                     </span>
                   </Button>
                 );
@@ -174,11 +172,10 @@ export default function GameScreen({
 
             {/* Result Feedback */}
             {showResult && (
-              <div className={`mt-6 p-4 rounded-lg text-center font-display font-bold text-lg ${
-                isCorrect
+              <div className={`mt-6 p-4 rounded-lg text-center font-display font-bold text-lg ${isCorrect
                   ? 'bg-accent/20 text-accent border border-accent'
                   : 'bg-destructive/20 text-destructive border border-destructive'
-              }`}>
+                }`}>
                 {isCorrect ? '✓ إجابة صحيحة!' : '✗ إجابة خاطئة'}
               </div>
             )}

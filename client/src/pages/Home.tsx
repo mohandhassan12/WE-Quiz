@@ -5,6 +5,9 @@ import GameScreen from '@/components/GameScreen';
 import LevelComplete from '@/components/LevelComplete';
 import GameOver from '@/components/GameOver';
 import Leaderboard from '@/components/Leaderboard';
+import Profile from '@/components/Profile';
+import { Button } from '@/components/ui/button';
+import { User, Trophy, Play } from 'lucide-react';
 
 /**
  * Home Page - Main Quiz Game Interface
@@ -22,6 +25,7 @@ export default function Home() {
   const [gameStarted, setGameStarted] = useState(false);
   const [showLevelComplete, setShowLevelComplete] = useState(false);
   const [showLeaderboard, setShowLeaderboard] = useState(false);
+  const [showProfile, setShowProfile] = useState(false);
   const [lastLevelScore, setLastLevelScore] = useState(0);
 
   const quiz = useQuizGame(allQuestions);
@@ -81,6 +85,11 @@ export default function Home() {
     setShowLevelComplete(false);
   };
 
+  const handleLogout = () => {
+    // In a real app we'd clear tokens etc.
+    window.location.reload();
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
@@ -99,6 +108,17 @@ export default function Home() {
       <Leaderboard
         currentPlayerId={quiz.playerData?.id}
         onBack={() => setShowLeaderboard(false)}
+      />
+    );
+  }
+
+  if (showProfile && quiz.playerData) {
+    return (
+      <Profile
+        playerData={quiz.playerData}
+        onBack={() => setShowProfile(false)}
+        onLogout={handleLogout}
+        onUpdateProfile={quiz.loadPlayerData}
       />
     );
   }
@@ -127,6 +147,27 @@ export default function Home() {
 
   return (
     <>
+      <div className="fixed top-4 left-4 z-50 flex gap-2">
+        <Button
+          size="icon"
+          variant="outline"
+          className="rounded-full border-primary/50 hover:bg-primary/20"
+          onClick={() => setShowProfile(true)}
+          title="الملف الشخصي"
+        >
+          <User className="w-5 h-5 text-primary" />
+        </Button>
+        <Button
+          size="icon"
+          variant="outline"
+          className="rounded-full border-accent/50 hover:bg-accent/20"
+          onClick={() => setShowLeaderboard(true)}
+          title="المتصدرين"
+        >
+          <Trophy className="w-5 h-5 text-accent" />
+        </Button>
+      </div>
+
       <GameScreen
         level={quiz.currentLevel}
         questionIndex={quiz.currentQuestionIndex}

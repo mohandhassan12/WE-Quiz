@@ -1,8 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
-
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -44,14 +42,22 @@
 
 :root {
   /* Vibrant Gamification Design System */
-  --primary: #00D9FF; /* Electric Cyan */
-  --primary-foreground: #0F172A; /* Dark Navy */
-  --secondary: #6B21A8; /* Deep Purple */
-  --secondary-foreground: #FFFFFF; /* White */
-  --accent: #CCFF00; /* Lime Green */
-  --accent-foreground: #0F172A; /* Dark Navy */
-  --destructive: #FF1744; /* Bright Red */
-  --destructive-foreground: #FFFFFF; /* White */
+  --primary: #00D9FF;
+  /* Electric Cyan */
+  --primary-foreground: #0F172A;
+  /* Dark Navy */
+  --secondary: #6B21A8;
+  /* Deep Purple */
+  --secondary-foreground: #FFFFFF;
+  /* White */
+  --accent: #CCFF00;
+  /* Lime Green */
+  --accent-foreground: #0F172A;
+  /* Dark Navy */
+  --destructive: #FF1744;
+  /* Bright Red */
+  --destructive-foreground: #FFFFFF;
+  /* White */
   --sidebar-primary: #00D9FF;
   --sidebar-primary-foreground: #0F172A;
   --chart-1: #00D9FF;
@@ -59,20 +65,28 @@
   --chart-3: #CCFF00;
   --chart-4: #FF1744;
   --chart-5: #9D4EDD;
-  
+
   --radius: 0.75rem;
-  --background: #0F172A; /* Dark Navy */
-  --foreground: #FFFFFF; /* White */
-  --card: #1A1F3A; /* Slightly lighter navy */
-  --card-foreground: #FFFFFF; /* White */
+  --background: #0F172A;
+  /* Dark Navy */
+  --foreground: #FFFFFF;
+  /* White */
+  --card: #1A1F3A;
+  /* Slightly lighter navy */
+  --card-foreground: #FFFFFF;
+  /* White */
   --popover: #1A1F3A;
   --popover-foreground: #FFFFFF;
-  --muted: #2D3748; /* Gray-blue */
-  --muted-foreground: #CBD5E0; /* Light gray */
+  --muted: #2D3748;
+  /* Gray-blue */
+  --muted-foreground: #CBD5E0;
+  /* Light gray */
   --secondary-foreground: #FFFFFF;
-  --border: #2D3748; /* Gray-blue border */
+  --border: #2D3748;
+  /* Gray-blue border */
   --input: #1A1F3A;
-  --ring: #00D9FF; /* Cyan ring */
+  --ring: #00D9FF;
+  /* Cyan ring */
   --sidebar: #1A1F3A;
   --sidebar-foreground: #FFFFFF;
   --sidebar-accent: #CCFF00;
@@ -85,9 +99,11 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),
   [type="button"]:not(:disabled),
@@ -116,7 +132,7 @@
   }
 
   /* Vibrant Gamification Specific Styles */
-  
+
   /* Glowing cyan border effect */
   .glow-cyan {
     @apply border-2 border-primary shadow-lg;
@@ -143,8 +159,15 @@
 
   /* Bounce animation for interactive elements */
   @keyframes bounce-subtle {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-4px); }
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-4px);
+    }
   }
 
   .bounce-subtle {
@@ -157,6 +180,7 @@
       transform: translateY(-10px) rotate(0deg);
       opacity: 1;
     }
+
     100% {
       transform: translateY(100px) rotate(360deg);
       opacity: 0;
@@ -169,8 +193,15 @@
 
   /* Pulse glow effect */
   @keyframes pulse-glow {
-    0%, 100% { box-shadow: 0 0 20px rgba(0, 217, 255, 0.5); }
-    50% { box-shadow: 0 0 30px rgba(0, 217, 255, 0.8); }
+
+    0%,
+    100% {
+      box-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
+    }
+
+    50% {
+      box-shadow: 0 0 30px rgba(0, 217, 255, 0.8);
+    }
   }
 
   .pulse-glow {
@@ -183,6 +214,7 @@
       transform: scale(1);
       opacity: 1;
     }
+
     100% {
       transform: scale(1.2);
       opacity: 0;
@@ -210,18 +242,23 @@
 }
 
 /* Custom font imports for Vibrant Gamification */
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Tajawal:wght@400;500;700;800&display=swap');
 
 :root {
-  --font-display: 'Space Grotesk', sans-serif;
-  --font-body: 'Inter', sans-serif;
+  --font-display: 'Tajawal', 'Space Grotesk', sans-serif;
+  --font-body: 'Tajawal', 'Inter', sans-serif;
 }
 
 body {
   font-family: var(--font-body);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-display);
   font-weight: 700;
 }

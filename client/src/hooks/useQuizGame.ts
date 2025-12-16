@@ -14,6 +14,7 @@ export interface PlayerData {
   username?: string;
   email?: string;
   branch?: string;
+  avatar_url?: string;
   current_level: number;
   total_score: number;
   last_played_at: string;
@@ -75,17 +76,33 @@ export const useQuizGame = (allQuestions: Question[]) => {
       categoryQuestions = allQuestions;
     }
 
-    // Shuffle and select random questions for this level
-    const shuffled = [...categoryQuestions].sort(() => Math.random() - 0.5);
+    // Select random questions
+    // This logic ensures we pick random questions from the ENTIRE pool, not just a slice
+    const shuffled = [...allQuestions].sort(() => Math.random() - 0.5);
     const selected = shuffled.slice(0, LEVEL_QUESTIONS_COUNT);
+
+    // Add difficulty rating logic (simulated)
+    // In a real app we might pick based on explicit difficulty field
+    // Here we just pick random ones for variety
+
     setLevelQuestions(selected);
     setCurrentQuestionIndex(0);
     setSelectedAnswer(null);
     setShowResult(false);
     setScore(0);
 
-    // Set time limit based on level
-    const timeLimit = currentLevel <= 30 ? BASE_TIME_LIMIT : REDUCED_TIME_LIMIT;
+    // Dynamic Time Limit Scaling
+    // Level 1-5: 20s
+    // Level 6-10: 18s
+    // Level 11-15: 15s
+    // Level 16-20: 12s
+    // Level 21+: 10s
+    let timeLimit = BASE_TIME_LIMIT;
+    if (currentLevel > 5) timeLimit = 18;
+    if (currentLevel > 10) timeLimit = 15;
+    if (currentLevel > 15) timeLimit = 12;
+    if (currentLevel > 20) timeLimit = REDUCED_TIME_LIMIT;
+
     setTimeLeft(timeLimit);
     setGameActive(true);
   }, [allQuestions, currentLevel]);
@@ -157,7 +174,7 @@ export const useQuizGame = (allQuestions: Question[]) => {
       total_score: newTotalScore,
       last_played_at: new Date().toISOString(),
     };
-    
+
     console.log('Updating player data:', updatedPlayer);
 
     // Save to Supabase
@@ -175,7 +192,7 @@ export const useQuizGame = (allQuestions: Question[]) => {
         console.error('Error updating player data:', error);
         throw error;
       }
-      
+
       console.log('Player data updated successfully!');
     } catch (e) {
       console.error('Failed to save player data:', e);

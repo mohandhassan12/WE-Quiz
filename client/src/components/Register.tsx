@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { supabase } from '@/lib/supabase';
 import type { PlayerData } from '@/hooks/useQuizGame';
+import AvatarSelection from './AvatarSelection';
 
 interface RegisterProps {
   onPlayerRegistered: () => void;
@@ -15,6 +16,7 @@ export default function Register({ onPlayerRegistered, onLoadPlayerData }: Regis
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [branch, setBranch] = useState('');
+  const [avatar, setAvatar] = useState('avatar-1');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -61,6 +63,7 @@ export default function Register({ onPlayerRegistered, onLoadPlayerData }: Regis
           username: username.trim(),
           password_hash: passwordHash,
           branch: branch.trim(),
+          avatar_url: avatar,
           current_level: 1,
           total_score: 0,
           level_scores: { 1: 0 },
@@ -150,6 +153,9 @@ export default function Register({ onPlayerRegistered, onLoadPlayerData }: Regis
             className="w-full bg-background border-2 border-primary/50 text-foreground placeholder-muted-foreground text-lg py-6 px-4 rounded-lg focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-300 font-body text-right"
             dir="rtl"
           />
+        </div>
+        <div className="pt-2">
+          <AvatarSelection selectedAvatar={avatar} onSelect={setAvatar} />
         </div>
       </div>
       <Button
