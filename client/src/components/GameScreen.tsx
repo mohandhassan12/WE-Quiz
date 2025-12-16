@@ -123,10 +123,10 @@ export default function GameScreen({
         <div className="w-full max-w-2xl">
           {/* Question Card */}
           <Card className={`bg-card border-2 mb-8 p-6 md:p-8 rounded-xl transition-all duration-300 ${showResult
-              ? isCorrect
-                ? 'border-accent glow-lime'
-                : 'border-destructive glow-red'
-              : 'border-primary/50 hover:border-primary'
+            ? isCorrect
+              ? 'border-accent glow-lime'
+              : 'border-destructive glow-red'
+            : 'border-primary/50 hover:border-primary'
             }`} dir="rtl">
             {question.category && (
               <div className="mb-4 text-right">
@@ -135,7 +135,7 @@ export default function GameScreen({
                 </span>
               </div>
             )}
-            <h2 className="text-2xl md:text-3xl font-display font-bold text-foreground text-right mb-8 leading-relaxed">
+            <h2 className="text-2xl md:text-3xl font-display font-bold text-foreground text-right mb-8 leading-relaxed break-words whitespace-pre-wrap">
               {question.question}
             </h2>
 
@@ -152,18 +152,18 @@ export default function GameScreen({
                     key={letter}
                     onClick={() => !showResult && onSelectAnswer(letter)}
                     disabled={showResult}
-                    className={`w-full text-right p-4 md:p-6 rounded-lg font-body text-base md:text-lg transition-all duration-300 ${showCorrect
-                        ? 'bg-accent text-background border-2 border-accent glow-lime'
-                        : showIncorrect
-                          ? 'bg-destructive text-foreground border-2 border-destructive glow-red'
-                          : isSelected
-                            ? 'bg-primary text-background border-2 border-primary glow-cyan'
-                            : 'bg-card border-2 border-primary/30 text-foreground hover:border-primary hover:bg-primary/10'
+                    className={`w-full text-right p-4 md:p-6 rounded-lg font-body text-base md:text-lg transition-all duration-300 h-auto whitespace-normal ${showCorrect
+                      ? 'bg-accent text-background border-2 border-accent glow-lime'
+                      : showIncorrect
+                        ? 'bg-destructive text-foreground border-2 border-destructive glow-red'
+                        : isSelected
+                          ? 'bg-primary text-background border-2 border-primary glow-cyan'
+                          : 'bg-card border-2 border-primary/30 text-foreground hover:border-primary hover:bg-primary/10'
                       } ${!showResult && 'hover:scale-105 active:scale-95'}`}
                   >
-                    <span className="flex items-center justify-between w-full">
-                      <span>{question.options[letter]}</span>
-                      <span className="font-display font-bold text-lg ltr:ml-2">{letter}</span>
+                    <span className="flex items-center justify-between w-full h-full">
+                      <span className="break-words whitespace-pre-wrap text-right flex-1 ml-4">{question.options[letter]}</span>
+                      <span className="font-display font-bold text-lg ltr:ml-2 flex-shrink-0">{letter}</span>
                     </span>
                   </Button>
                 );
@@ -173,8 +173,8 @@ export default function GameScreen({
             {/* Result Feedback */}
             {showResult && (
               <div className={`mt-6 p-4 rounded-lg text-center font-display font-bold text-lg ${isCorrect
-                  ? 'bg-accent/20 text-accent border border-accent'
-                  : 'bg-destructive/20 text-destructive border border-destructive'
+                ? 'bg-accent/20 text-accent border border-accent'
+                : 'bg-destructive/20 text-destructive border border-destructive'
                 }`}>
                 {isCorrect ? '✓ إجابة صحيحة!' : '✗ إجابة خاطئة'}
               </div>
