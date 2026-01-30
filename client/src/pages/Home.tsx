@@ -34,7 +34,7 @@ export default function Home() {
   useEffect(() => {
     const loadQuestions = async () => {
       try {
-        const response = await fetch('/we_questionss.json');
+        const response = await fetch('/questions.json');
         const data: Question[] = await response.json();
         setAllQuestions(data);
       } catch (error) {
