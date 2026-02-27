@@ -69,7 +69,7 @@ export default function GameScreen({
   const isTimeWarning = timeLeft <= 5;
   const isCorrect = selectedAnswer === question.answer;
 
-  const optionLetters = ['A', 'B', 'C', 'D'];
+  const optionLetters = ['a', 'b', 'c', 'd'];
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
