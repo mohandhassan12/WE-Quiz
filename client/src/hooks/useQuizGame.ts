@@ -47,6 +47,7 @@ export const useQuizGame = (allQuestions: Question[]) => {
   const [timeLeft, setTimeLeft] = useState(BASE_TIME_LIMIT);
   const [gameActive, setGameActive] = useState(false);
   const [levelQuestions, setLevelQuestions] = useState<Question[]>([]);
+  const [usedQuestionIndices, setUsedQuestionIndices] = useState<Set<number>>(new Set());
 
   // Load player data from Supabase
   const loadPlayerData = useCallback(async (playerData: PlayerData) => {
@@ -76,14 +77,30 @@ export const useQuizGame = (allQuestions: Question[]) => {
       categoryQuestions = allQuestions;
     }
 
-    // Select random questions
-    // This logic ensures we pick random questions from the ENTIRE pool, not just a slice
-    const shuffled = [...allQuestions].sort(() => Math.random() - 0.5);
-    const selected = shuffled.slice(0, LEVEL_QUESTIONS_COUNT);
+    // Select random questions without repetition
+    let availableIndices = allQuestions.map((_, i) => i).filter(i => !usedQuestionIndices.has(i));
+    
+    // If we've used all questions, reset the tracker
+    if (availableIndices.length < LEVEL_QUESTIONS_COUNT) {
+      availableIndices = allQuestions.map((_, i) => i);
+      setUsedQuestionIndices(new Set());
+    }
 
-    // Add difficulty rating logic (simulated)
-    // In a real app we might pick based on explicit difficulty field
-    // Here we just pick random ones for variety
+    const selectedIndices: number[] = [];
+    const tempIndices = [...availableIndices];
+    
+    for (let i = 0; i < LEVEL_QUESTIONS_COUNT && tempIndices.length > 0; i++) {
+      const randomIndex = Math.floor(Math.random() * tempIndices.length);
+      selectedIndices.push(tempIndices[randomIndex]);
+      tempIndices.splice(randomIndex, 1);
+    }
+
+    const selected = selectedIndices.map(i => allQuestions[i]);
+    setUsedQuestionIndices(prev => {
+      const next = new Set(prev);
+      selectedIndices.forEach(i => next.add(i));
+      return next;
+    });
 
     setLevelQuestions(selected);
     setCurrentQuestionIndex(0);

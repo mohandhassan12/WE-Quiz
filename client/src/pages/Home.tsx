@@ -26,6 +26,7 @@ export default function Home() {
   const [showLevelComplete, setShowLevelComplete] = useState(false);
   const [showLeaderboard, setShowLeaderboard] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
+  const [showGameOver, setShowGameOver] = useState(false);
   const [lastLevelScore, setLastLevelScore] = useState(0);
 
   const quiz = useQuizGame(allQuestions);
@@ -73,9 +74,12 @@ export default function Home() {
 
   // Handle game over (time expired)
   const handleGameOver = () => {
-    if (quiz.currentQuestionIndex === quiz.levelQuestions.length - 1) {
-      handleLevelComplete();
-    }
+    setShowGameOver(true);
+  };
+
+  const handleRetryLevel = () => {
+    setShowGameOver(false);
+    quiz.initializeLevel();
   };
 
   // Reset game and go back to registration
@@ -83,6 +87,7 @@ export default function Home() {
     quiz.resetGame();
     setGameStarted(false);
     setShowLevelComplete(false);
+    setShowGameOver(false);
   };
 
   const handleLogout = () => {
@@ -128,6 +133,17 @@ export default function Home() {
       <PlayerRegistration
         onPlayerRegistered={handlePlayerRegistered}
         onLoadPlayerData={quiz.loadPlayerData}
+      />
+    );
+  }
+
+  if (showGameOver) {
+    return (
+      <GameOver
+        level={quiz.currentLevel}
+        score={quiz.score}
+        onRetry={handleRetryLevel}
+        onReset={handleResetGame}
       />
     );
   }

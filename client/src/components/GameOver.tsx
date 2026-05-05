@@ -46,12 +46,12 @@ export default function GameOver({
             {/* Score Display */}
             <div className="bg-background border-2 border-destructive/30 rounded-lg p-6 mb-8">
               <p className="text-sm text-muted-foreground font-body mb-2">نقاطك في هذا المستوى</p>
-              <p className="text-5xl font-display font-bold text-destructive">{score}/5</p>
+              <p className="text-5xl font-display font-bold text-destructive">{score}</p>
             </div>
 
             {/* Message */}
             <p className="text-lg text-muted-foreground font-body mb-8">
-              لم تتمكن من الإجابة على جميع الأسئلة في الوقت المحدد
+              انتهى الوقت قبل الإجابة! حاول أن تكون أسرع في المرة القادمة.
             </p>
           </div>
         </Card>

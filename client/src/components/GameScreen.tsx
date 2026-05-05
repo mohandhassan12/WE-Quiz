@@ -110,9 +110,9 @@ export default function GameScreen({
         <div className="max-w-2xl mx-auto">
           <div className="flex justify-between items-center mb-2">
             <p className="text-xs text-muted-foreground font-body">السؤال {questionIndex + 1} من {totalQuestions}</p>
-            <p className={`text-sm font-display font-bold ${isTimeWarning ? 'text-destructive animate-pulse' : 'text-primary'}`}>
-              {timeLeft}s
-            </p>
+              <p className={`text-xl font-display font-bold ${isTimeWarning ? 'text-destructive animate-bounce scale-125' : 'text-primary'}`}>
+                ⏱️ {timeLeft}s
+              </p>
           </div>
           <Progress value={progressPercent} className="h-2 bg-primary/20" />
         </div>

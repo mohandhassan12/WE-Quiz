@@ -42,19 +42,19 @@
 
 :root {
   /* Vibrant Gamification Design System */
-  --primary: #00D9FF;
-  /* Electric Cyan */
-  --primary-foreground: #0F172A;
-  /* Dark Navy */
-  --secondary: #6B21A8;
-  /* Deep Purple */
-  --secondary-foreground: #FFFFFF;
+  --primary: #4F1282;
+  /* WE Purple */
+  --primary-foreground: #FFFFFF;
   /* White */
-  --accent: #CCFF00;
-  /* Lime Green */
+  --secondary: #00D9FF;
+  /* Electric Cyan */
+  --secondary-foreground: #0F172A;
+  /* Dark Navy */
+  --accent: #FFD700;
+  /* Gold */
   --accent-foreground: #0F172A;
   /* Dark Navy */
-  --destructive: #FF1744;
+  --destructive: #FF3B30;
   /* Bright Red */
   --destructive-foreground: #FFFFFF;
   /* White */
