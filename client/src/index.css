@@ -58,41 +58,41 @@
   /* Bright Red */
   --destructive-foreground: #FFFFFF;
   /* White */
-  --sidebar-primary: #00D9FF;
-  --sidebar-primary-foreground: #0F172A;
-  --chart-1: #00D9FF;
-  --chart-2: #6B21A8;
-  --chart-3: #CCFF00;
-  --chart-4: #FF1744;
+  --sidebar-primary: #4F1282;
+  --sidebar-primary-foreground: #FFFFFF;
+  --chart-1: #4F1282;
+  --chart-2: #00D9FF;
+  --chart-3: #FFD700;
+  --chart-4: #FF3B30;
   --chart-5: #9D4EDD;
 
   --radius: 0.75rem;
-  --background: #0F172A;
-  /* Dark Navy */
-  --foreground: #FFFFFF;
+  --background: #FFFFFF;
   /* White */
-  --card: #1A1F3A;
-  /* Slightly lighter navy */
-  --card-foreground: #FFFFFF;
-  /* White */
-  --popover: #1A1F3A;
-  --popover-foreground: #FFFFFF;
-  --muted: #2D3748;
-  /* Gray-blue */
-  --muted-foreground: #CBD5E0;
-  /* Light gray */
-  --secondary-foreground: #FFFFFF;
-  --border: #2D3748;
-  /* Gray-blue border */
-  --input: #1A1F3A;
-  --ring: #00D9FF;
-  /* Cyan ring */
-  --sidebar: #1A1F3A;
-  --sidebar-foreground: #FFFFFF;
-  --sidebar-accent: #CCFF00;
-  --sidebar-accent-foreground: #0F172A;
-  --sidebar-border: #2D3748;
-  --sidebar-ring: #00D9FF;
+  --foreground: #1A1A1A;
+  /* Dark Gray */
+  --card: #F5F5F5;
+  /* Light Gray */
+  --card-foreground: #1A1A1A;
+  /* Dark Gray */
+  --popover: #FFFFFF;
+  --popover-foreground: #1A1A1A;
+  --muted: #D0D0D0;
+  /* Light Gray */
+  --muted-foreground: #666666;
+  /* Medium Gray */
+  --secondary-foreground: #1A1A1A;
+  --border: #E0E0E0;
+  /* Light border */
+  --input: #FFFFFF;
+  --ring: #4F1282;
+  /* Purple ring */
+  --sidebar: #F5F5F5;
+  --sidebar-foreground: #1A1A1A;
+  --sidebar-accent: #FFD700;
+  --sidebar-accent-foreground: #1A1A1A;
+  --sidebar-border: #E0E0E0;
+  --sidebar-ring: #4F1282;
 }
 
 @layer base {
@@ -133,28 +133,28 @@
 
   /* Vibrant Gamification Specific Styles */
 
-  /* Glowing cyan border effect */
+  /* Glowing purple border effect */
   .glow-cyan {
     @apply border-2 border-primary shadow-lg;
-    box-shadow: 0 0 20px rgba(0, 217, 255, 0.5), inset 0 0 10px rgba(0, 217, 255, 0.2);
+    box-shadow: 0 0 20px rgba(79, 18, 130, 0.4), inset 0 0 10px rgba(79, 18, 130, 0.1);
   }
 
-  /* Glowing purple border effect */
+  /* Glowing cyan border effect */
   .glow-purple {
     @apply border-2 border-secondary shadow-lg;
-    box-shadow: 0 0 20px rgba(107, 33, 168, 0.5), inset 0 0 10px rgba(107, 33, 168, 0.2);
+    box-shadow: 0 0 20px rgba(0, 217, 255, 0.4), inset 0 0 10px rgba(0, 217, 255, 0.1);
   }
 
-  /* Glowing lime border effect */
+  /* Glowing gold border effect */
   .glow-lime {
     @apply border-2 border-accent shadow-lg;
-    box-shadow: 0 0 20px rgba(204, 255, 0, 0.5), inset 0 0 10px rgba(204, 255, 0, 0.2);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.4), inset 0 0 10px rgba(255, 215, 0, 0.1);
   }
 
   /* Glowing red border effect */
   .glow-red {
     @apply border-2 border-destructive shadow-lg;
-    box-shadow: 0 0 20px rgba(255, 23, 68, 0.5), inset 0 0 10px rgba(255, 23, 68, 0.2);
+    box-shadow: 0 0 20px rgba(255, 59, 48, 0.4), inset 0 0 10px rgba(255, 59, 48, 0.1);
   }
 
   /* Bounce animation for interactive elements */
@@ -196,11 +196,11 @@
 
     0%,
     100% {
-      box-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
+      box-shadow: 0 0 20px rgba(79, 18, 130, 0.4);
     }
 
     50% {
-      box-shadow: 0 0 30px rgba(0, 217, 255, 0.8);
+      box-shadow: 0 0 30px rgba(79, 18, 130, 0.6);
     }
   }
 
