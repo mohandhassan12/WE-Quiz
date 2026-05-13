@@ -67,7 +67,7 @@ export default function GameScreen({
 
   const progressPercent = ((questionIndex + 1) / totalQuestions) * 100;
   const isTimeWarning = timeLeft <= 5;
-  const isCorrect = selectedAnswer === question.answer;
+  const isCorrect = selectedAnswer === question.correct;
 
   const optionLetters = ['a', 'b', 'c', 'd'];
 
