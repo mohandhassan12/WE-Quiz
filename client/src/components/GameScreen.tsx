@@ -143,7 +143,7 @@ export default function GameScreen({
             <div className="space-y-3">
               {optionLetters.map((letter) => {
                 const isSelected = selectedAnswer === letter;
-                const isAnswerCorrect = letter === question.answer;
+                const isAnswerCorrect = letter === question.correct;
                 const showCorrect = showResult && isAnswerCorrect;
                 const showIncorrect = showResult && isSelected && !isAnswerCorrect;
 
