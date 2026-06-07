@@ -2,9 +2,10 @@ import { useState, useEffect, useCallback } from 'react';
 import { supabase } from '@/lib/supabase';
 
 export interface Question {
+  id?: number;
   question: string;
   options: Record<string, string>;
-  answer: string;
+  correct: string;
   category?: string; // WE Gold, Super Kix, etc.
 }
 
@@ -149,7 +150,7 @@ export const useQuizGame = (allQuestions: Question[]) => {
     setShowResult(true);
 
     // Check if answer is correct
-    const isCorrect = answer === levelQuestions[currentQuestionIndex].answer;
+    const isCorrect = answer === levelQuestions[currentQuestionIndex].correct;
     if (isCorrect) {
       setScore(prev => prev + 10);
     }
